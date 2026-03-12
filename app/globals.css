@@ -3,25 +3,87 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #050505;
+  --foreground: #ededed;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-blink-cursor {
+  animation: blink-cursor 1s steps(1) infinite;
+}
+
+/* ── Skills Scanner: Glitch Effect ─────────────────────────────────── */
+@keyframes skills-glitch {
+  0%, 100% {
+    text-shadow: none;
+    transform: translate(0);
+  }
+  10% {
+    text-shadow:
+      -1px 0 rgba(59, 130, 246, 0.6),
+       1px 0 rgba(245, 158, 11, 0.6);
+    transform: translate(-1px, 0);
+  }
+  20% {
+    text-shadow:
+       1px 0 rgba(16, 185, 129, 0.5),
+      -1px 0 rgba(139, 92, 246, 0.5);
+    transform: translate(1px, 0);
+  }
+  30% {
+    text-shadow: none;
+    transform: translate(0);
+  }
+  40% {
+    text-shadow:
+      -1px 0 rgba(245, 158, 11, 0.4),
+       1px 0 rgba(59, 130, 246, 0.4);
+    transform: translate(0, -1px);
+  }
+  50% {
+    text-shadow: none;
+    transform: translate(0);
+  }
+}
+
+.skills-glitch {
+  animation: skills-glitch 0.4s ease-in-out;
+  position: relative;
+}
+
+/* ── Custom Scrollbar ─────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #10b981; /* emerald-500 */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #34d399; /* emerald-400 */
 }

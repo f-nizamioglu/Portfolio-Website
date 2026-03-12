@@ -1,0 +1,133 @@
+{
+  "profile": {
+    "name": "FIKRAT MAMMADOV",
+    "title": "Full-Stack Software Engineer",
+    "summary": "Full-stack Software Engineer specializing in multi-tenant SaaS architecture and systems development. Experienced in designing secure, scalable web applications using Next.js, Supabase, and PostgreSQL, alongside strong proficiency in C and C# for foundational software and desktop tools. Combines deep technical understanding with agile problem-solving to deliver robust, production-ready solutions for global remote teams.",
+    "contact": {
+      "email": "fnizamioglu@gmail.com",
+      "location": "Istanbul, Turkiye",
+      "github": "https://github.com/f-nizamioglu",
+      "linkedin": "https://www.linkedin.com/in/fnizamioglu/"
+    },
+    "education": "B.Sc. Computer Engineering, Yildiz Technical University, 4th Year",
+    "passions": [
+      "SaaS Architecture",
+      "Low-Level Systems",
+      "AI Integration"
+    ]
+  },
+  "experience": [
+    {
+      "role": "Software Developer [cite: 15]",
+      "company": "IDEA Consulting & Solutions [cite: 16]",
+      "duration": "06/2023-09/2023 [cite: 14] to Present [cite: 13]",
+      "highlights": [
+        "Engineered a secure, multi-tenant fitness SaaS platform, implementing RLS in Supabase to ensure strict tenant data isolation. [cite: 17, 18]",
+        "Architected and developed the frontend using Next.js, React, and Tailwind CSS, improving Ul performance and maintainability. [cite: 19]",
+        "Collaborated with cross-functional teams to optimize backend workflows, enhancing scalability and deployment efficiency through Docker. [cite: 20]"
+      ]
+    },
+    {
+      "role": "Software Development Intern [cite: 21]",
+      "company": "IDEA Consulting [cite: 22]",
+      "highlights": [
+        "Supported senior engineers in developing custom consumer software, contributing to both frontend and backend modules. [cite: 23]",
+        "Debugged and refactored legacy codebases, improving reliability and reducing runtime errors by 20%. [cite: 24]",
+        "Documented development milestones and implemented best coding practices to align with company standards. [cite: 25]"
+      ]
+    }
+  ],
+  "skills": {
+    "languages": [
+      "C/C++ [cite: 32]",
+      "C# [cite: 32]",
+      "Python [cite: 32]",
+      "Java [cite: 32]",
+      "JavaScript [cite: 32]",
+      "TypeScript [cite: 32]",
+      "Assembly [cite: 32]"
+    ],
+    "web": [
+      "Next.js [cite: 42]",
+      "React [cite: 42]",
+      "Tailwind CSS [cite: 42]",
+      "FastAPI [cite: 42]"
+    ],
+    "databases_and_security": [
+      "PostgreSQL [cite: 34]",
+      "Supabase [cite: 34]",
+      "Row-Level Security (RLS) [cite: 34]"
+    ],
+    "tools": [
+      "Docker [cite: 44]",
+      "Git [cite: 44]",
+      "VS Code [cite: 44]",
+      "Linux [cite: 44]"
+    ],
+    "concepts": [
+      "Multi-tenant SaaS [cite: 36]",
+      "API Design [cite: 36]",
+      "Data Structures [cite: 36]",
+      "Memory Management [cite: 36]",
+      "NLP [cite: 36]"
+    ],
+    "spoken_languages": [
+      "Azerbaijani (Native) [cite: 38, 39]",
+      "English (C1, IELTS 8.0) [cite: 45, 46]",
+      "Turkish (C1) [cite: 40, 48]",
+      "French (A2) [cite: 47, 49]"
+    ]
+  },
+  "projects": [
+    {
+      "id": "meteor-weather",
+      "title": "Meteor App",
+      "category": "Frontend Web",
+      "description": "A modern weather application with a highly responsive UI, fully deployed to Vercel for real-time forecasting.",
+      "tech": [
+        "Next.js",
+        "React",
+        "Vercel"
+      ]
+    },
+    {
+      "id": "ai-support",
+      "title": "Pro Al Support Engine [cite: 51]",
+      "category": "Backend & Containerization",
+      "description": "Built a full-stack Al support platform on python using FastAPI, PostgreSQL, and Docker, enabling modular API integration and containerized deployment. [cite: 52, 53]",
+      "tech": [
+        "Python",
+        "FastAPI",
+        "Docker",
+        "PostgreSQL"
+      ]
+    },
+    {
+      "id": "paint-clone",
+      "title": "Desktop Image Editor [cite: 54]",
+      "category": "Desktop Application",
+      "description": "Developed a C# Windows application replicating MS Paint functionality, managing GUI events and real-time image rendering. [cite: 55]",
+      "tech": [
+        "C#"
+      ]
+    },
+    {
+      "id": "airport-traffic",
+      "title": "Airport Traffic Management System [cite: 56]",
+      "category": "Low-Level Systems",
+      "description": "Designed a C-based routing algorithm emphasizing memory efficiency and optimized data structures for real-time traffic simulation. [cite: 57]",
+      "tech": [
+        "C"
+      ]
+    },
+    {
+      "id": "numerical-calc",
+      "title": "Numerical Methods Calculator [cite: 58]",
+      "category": "Low-Level Systems",
+      "description": "Implemented a C program performing Newton-Raphson, Trapezoidal Rule, and Gaussian Elimination methods for numerical analysis. [cite: 59]",
+      "tech": [
+        "C"
+      ]
+    }
+  ]
+}
