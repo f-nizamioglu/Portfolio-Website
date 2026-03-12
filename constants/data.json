@@ -1,6 +1,6 @@
 {
   "profile": {
-    "name": "FIKRAT MAMMADOV",
+    "name": "./",
     "title": "Full-Stack Software Engineer",
     "summary": "Full-stack Software Engineer specializing in multi-tenant SaaS architecture and systems development. Experienced in designing secure, scalable web applications using Next.js, Supabase, and PostgreSQL, alongside strong proficiency in C and C# for foundational software and desktop tools. Combines deep technical understanding with agile problem-solving to deliver robust, production-ready solutions for global remote teams.",
     "contact": {
@@ -89,6 +89,20 @@
         "React",
         "Vercel"
       ]
+    },
+    {
+      "id": "oop-paint-clone",
+      "title": "C# Windows Paint Clone",
+      "subtitle": "Event-Driven Desktop Application",
+      "description": "Architected a desktop drawing application using C# 14.0 and .NET 10. Implemented the Strategy Pattern for flexible drawing tool swapping and the Command Pattern to manage a robust, stack-based Undo/Redo graphics state.",
+      "techStack": [
+        "C#",
+        ".NET 10",
+        "Windows Forms",
+        "System.Drawing",
+        "Design Patterns"
+      ],
+      "category": "Software Engineering"
     },
     {
       "id": "ai-support",

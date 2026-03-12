@@ -27,6 +27,7 @@ yarn-error.log*
 
 # local env files
 .env*.local
+.env.local
 
 # vercel
 .vercel
@@ -37,3 +38,8 @@ next-env.d.ts
 
 # agent configuration files
 .agent/
+.agent/**/*.md
+.claude/
+.claude/**/*.md
+.claude/agents/
+.claude/agents/**/*.md

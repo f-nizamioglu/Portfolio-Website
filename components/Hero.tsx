@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import portfolioData from "@/constants/data.json";
 
 // ── Data ─────────────────────────────────────────────────────────────
@@ -37,16 +36,6 @@ const bootLineVariants = {
       duration: 0.6,
       ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number],
     },
-  },
-};
-
-/** Floating Y-axis animation for the headshot */
-const floatAnimation = {
-  y: [0, -10, 0],
-  transition: {
-    duration: 5,
-    repeat: Infinity,
-    ease: "easeInOut" as const,
   },
 };
 
@@ -99,54 +88,9 @@ export default function Hero(): JSX.Element {
         className="pointer-events-none absolute bottom-1/4 -right-32 w-[24rem] h-[24rem] rounded-full bg-sky-500/[0.04] blur-[120px]"
       />
 
-      {/* ── Main Two-Column Grid ───────────────────────────────────── */}
-      <div className="relative z-10 max-w-6xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
-        {/* ── LEFT COLUMN: Profile Image ───────────────────────────── */}
-        <div className="flex justify-center md:justify-end order-1 md:order-1">
-          <motion.div
-            layout
-            initial={{ opacity: 0, scale: 0.92 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.9, ease: "easeOut" }}
-          >
-            <motion.div
-              layout
-              animate={floatAnimation}
-              className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-[22rem] lg:h-[22rem] rounded-xl border border-white/10 backdrop-blur-md bg-white/[0.03] shadow-[0_0_40px_rgba(255,255,255,0.03)] overflow-hidden group"
-            >
-              {/* Glassmorphism inner glow */}
-              <div
-                aria-hidden="true"
-                className="absolute inset-0 bg-gradient-to-br from-white/[0.06] via-transparent to-white/[0.04] pointer-events-none"
-              />
-
-              {/* Interactive hover glow */}
-              <div
-                aria-hidden="true"
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.07)_0%,transparent_70%)]"
-              />
-
-              {/* Headshot Image */}
-              <Image
-                src="/headshot.jpeg"
-                alt="Fikrat Mammadov - Full-Stack Engineer"
-                fill
-                priority
-                className="object-cover z-10"
-                sizes="(max-width: 768px) 256px, (max-width: 1024px) 320px, 352px"
-              />
-
-              {/* Corner Bracket Accents */}
-              <div className="absolute top-3 left-3 w-5 h-5 border-t-2 border-l-2 border-white/15 z-20" />
-              <div className="absolute top-3 right-3 w-5 h-5 border-t-2 border-r-2 border-white/15 z-20" />
-              <div className="absolute bottom-3 left-3 w-5 h-5 border-b-2 border-l-2 border-white/15 z-20" />
-              <div className="absolute bottom-3 right-3 w-5 h-5 border-b-2 border-r-2 border-white/15 z-20" />
-            </motion.div>
-          </motion.div>
-        </div>
-
-        {/* ── RIGHT COLUMN: System Boot Terminal ───────────────────── */}
-        <div className="order-2 md:order-2 w-full">
+      {/* ── Main Single-Column Layout ─────────────────────────────── */}
+      <div className="relative z-10 max-w-5xl mx-auto w-full">
+        <div className="w-full">
           <motion.div
             layout
             className="w-full rounded-lg border border-white/5 bg-white/[0.02] p-5 sm:p-6 md:p-8 font-mono"
@@ -171,12 +115,12 @@ export default function Hero(): JSX.Element {
               </span>
             </motion.div>
 
-            {/* ── Line 2: Name (Heading) ──────────────────────────── */}
+            {/* ── Line 2: Section Heading ──────────────────────────── */}
             <motion.h1
               variants={bootLineVariants}
               className="mt-5 text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] font-bold tracking-tight text-white leading-[1.1]"
             >
-              {profile.name}
+              {`// ENGINEERING`}
             </motion.h1>
 
             {/* ── Line 3: Title (Sub-heading) ─────────────────────── */}

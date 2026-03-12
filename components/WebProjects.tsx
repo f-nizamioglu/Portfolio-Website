@@ -250,7 +250,7 @@ export default function WebProjects() {
                 className="mt-auto pt-6 border-t border-white/5 flex flex-wrap gap-2 relative z-30"
                 variants={{ hover: { transition: { staggerChildren: 0.1 } } }}
               >
-                {project.tech.map((tech) => (
+                {(project.tech || project.techStack || []).map((tech) => (
                   <motion.span
                     key={tech}
                     variants={{

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import NavBar from "@/components/NavBar";
 import "./globals.css";
 
 const geistSans = localFont({
@@ -16,19 +15,24 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://fnizamioglu.com"),
-  title: "Fikrat Mammadov | Full-Stack Software Engineer",
-  description: "4th-Year Computer Engineering student at Yildiz Technical University specializing in multi-tenant SaaS, FastAPI, and C/C++ systems.",
+  title: "FM | Portfolio",
+  description: "Full-Stack Engineer portfolio focused on robust software systems, product engineering, and low-level C/C++ problem solving.",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
+  },
   openGraph: {
-    title: "Fikrat Mammadov | Full-Stack Software Engineer",
-    description: "4th-Year Computer Engineering student at Yildiz Technical University specializing in multi-tenant SaaS, FastAPI, and C/C++ systems.",
+    title: "FM | Portfolio",
+    description: "Full-Stack Engineer portfolio focused on robust software systems, product engineering, and low-level C/C++ problem solving.",
     url: "https://fnizamioglu.com",
-    siteName: "Fikrat Mammadov Portfolio",
+    siteName: "FM | Portfolio",
     images: [
       {
         url: "/og-image.jpeg", 
         width: 1200,
         height: 630,
-        alt: "Fikrat Mammadov - Developer Console",
+        alt: "Developer Console Portfolio",
       },
     ],
     locale: "en_US",
@@ -46,7 +50,6 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased selection:bg-emerald-500/30`}
       >
-        <NavBar />
         {children}
       </body>
     </html>

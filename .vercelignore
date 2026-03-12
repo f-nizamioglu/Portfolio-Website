@@ -1,0 +1,4 @@
+.agent/
+.agent/**/*.md
+.claude/agents/
+.claude/agents/**/*.md

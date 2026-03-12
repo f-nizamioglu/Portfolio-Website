@@ -6,7 +6,7 @@ export default function NavBar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 backdrop-blur-md bg-[#050505]/60 border-b border-white/5">
       <div className="flex items-center gap-3 text-white font-mono font-bold tracking-widest text-sm sm:text-base">
-        <span className="text-emerald-500">FM</span>
+        <span className="text-emerald-500">./</span>
         <span className="text-white/10 hidden sm:inline">|</span>
         <span className="hidden sm:inline text-gray-400 font-light text-xs">PORTFOLIO.CONSOLE</span>
       </div>

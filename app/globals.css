@@ -69,6 +69,53 @@ body {
   position: relative;
 }
 
+/* ── Cyber Terminal: Chromatic Aberration ───────────────────────────── */
+@keyframes chromatic-drift {
+  0%,
+  100% {
+    text-shadow:
+      -1px 0 rgba(59, 130, 246, 0.35),
+       1px 0 rgba(244, 63, 94, 0.35);
+  }
+  50% {
+    text-shadow:
+      -2px 0 rgba(16, 185, 129, 0.3),
+       2px 0 rgba(245, 158, 11, 0.3);
+  }
+}
+
+.chromatic-text {
+  animation: chromatic-drift 2.8s ease-in-out infinite;
+}
+
+.chromatic-border {
+  position: relative;
+  isolation: isolate;
+}
+
+.chromatic-border::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0.4;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    -1px 0 0 rgba(59, 130, 246, 0.55),
+     1px 0 0 rgba(244, 63, 94, 0.55);
+  transition: opacity 0.25s ease, filter 0.25s ease, box-shadow 0.25s ease;
+}
+
+.chromatic-border:hover::after,
+.chromatic-border:focus-within::after {
+  opacity: 1;
+  filter: drop-shadow(0 0 12px rgba(16, 185, 129, 0.18));
+  box-shadow:
+    -2px 0 0 rgba(59, 130, 246, 0.75),
+     2px 0 0 rgba(244, 63, 94, 0.75);
+}
+
 /* ── Custom Scrollbar ─────────────────────────────────────────────────── */
 ::-webkit-scrollbar {
   width: 6px;
