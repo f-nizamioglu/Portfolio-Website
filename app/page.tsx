@@ -146,7 +146,7 @@ export default function Home() {
             </h2>
             <div className="w-full aspect-video rounded-xl mb-6 overflow-hidden">
               <Image
-                src="/Chipotle Pic.jpg"
+                src="/chipotle-team.jpg"
                 alt="WAT Chipotle Team"
                 width={1600}
                 height={900}

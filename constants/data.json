@@ -117,15 +117,6 @@
       ]
     },
     {
-      "id": "paint-clone",
-      "title": "Desktop Image Editor [cite: 54]",
-      "category": "Desktop Application",
-      "description": "Developed a C# Windows application replicating MS Paint functionality, managing GUI events and real-time image rendering. [cite: 55]",
-      "tech": [
-        "C#"
-      ]
-    },
-    {
       "id": "airport-traffic",
       "title": "Airport Traffic Management System [cite: 56]",
       "category": "Low-Level Systems",

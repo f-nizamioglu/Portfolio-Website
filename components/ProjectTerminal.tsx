@@ -58,8 +58,8 @@ export default function ProjectTerminal(): JSX.Element | null {
       if (base === "projects") {
         if (flag === "--list") {
           const listContent = portfolioData.projects.map((p) => (
-            <div key={p.id} className="text-gray-400">
-              [ID] <span className="text-emerald-400">{p.id}</span> | [TITLE] {p.title.replace(/\[cite:\s*\d+\]/g, "").trim()}
+            <div key={p.id} className="text-gray-400 font-mono">
+              <span className="text-emerald-400">[ID]</span> {p.id} <span className="text-white/20">|</span> <span className="text-emerald-400">[TITLE]</span> {p.title.replace(/\[cite:\s*\d+\]/g, "").trim()}
             </div>
           ));
           setHistory((prev) => [...prev, { type: "output", content: <div className="flex flex-col gap-1">{listContent}</div> }]);
@@ -70,21 +70,21 @@ export default function ProjectTerminal(): JSX.Element | null {
             let outputContent;
             if (project.id === "oop-paint-clone") {
               outputContent = (
-                <div className="flex flex-col gap-2 text-gray-400 my-2">
-                  <div className="text-white font-bold text-lg mb-1">{project.title.replace(/\[cite:\s*\d+\]/g, "").trim()}</div>
+                <div className="flex flex-col gap-2 text-gray-400 font-mono text-[13px] my-2">
+                  <div className="text-white font-semibold text-base mb-1">{project.title.replace(/\[cite:\s*\d+\]/g, "").trim()}</div>
                   <div>{project.description}</div>
                   <div className="text-emerald-400 mt-2">{`>> ARCHITECTURE: Event-Driven Desktop Application`}</div>
                   <div className="text-emerald-400">{`>> PATTERNS: Strategy Pattern (Tool Swapping), Command Pattern (Undo/Redo Stack)`}</div>
                   <div className="text-emerald-400">{`>> GRAPHICS API: System.Drawing (GDI+)`}</div>
-                  <div className="mt-2 text-xs">TECH STACK: {(project.tech || project.techStack || []).join(", ")}</div>
+                  <div className="mt-2 text-xs text-gray-300">{`>> TECH STACK: ${(project.tech || project.techStack || []).join(", ")}`}</div>
                 </div>
               );
             } else {
               outputContent = (
-                <div className="flex flex-col gap-2 text-gray-400 my-2">
-                  <div className="text-white font-bold text-lg mb-1">{project.title.replace(/\[cite:\s*\d+\]/g, "").trim()}</div>
+                <div className="flex flex-col gap-2 text-gray-400 font-mono text-[13px] my-2">
+                  <div className="text-white font-semibold text-base mb-1">{project.title.replace(/\[cite:\s*\d+\]/g, "").trim()}</div>
                   <div>{project.description}</div>
-                  <div className="mt-2 text-xs">TECH STACK: {(project.tech || project.techStack || []).join(", ")}</div>
+                  <div className="mt-2 text-xs text-gray-300">{`>> TECH STACK: ${(project.tech || project.techStack || []).join(", ")}`}</div>
                 </div>
               );
             }
