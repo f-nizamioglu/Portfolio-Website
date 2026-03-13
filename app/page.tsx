@@ -76,9 +76,11 @@ export default function Home() {
               <Image
                 src="/headshot.jpeg"
                 alt="Portfolio headshot - Full-Stack Engineer"
-                fill
+                width={1024}
+                height={1024}
+                quality={90}
                 priority
-                className="object-cover object-top z-10 rounded-xl"
+                className="w-full h-full object-cover object-top z-10 rounded-xl"
                 sizes="(max-width: 768px) 256px, (max-width: 1024px) 384px, 384px"
               />
               {/* Corner Bracket Accents */}
@@ -95,7 +97,7 @@ export default function Home() {
               Fikrat Mammadov
             </h1>
             <p className="text-lg sm:text-xl text-gray-300 mt-4 leading-relaxed">
-              Full-Stack <span className="font-mono text-emerald-300">Engineer</span> &amp; Aviation Enthusiast
+              Full-Stack <span className="font-mono text-emerald-300">Engineer</span>
             </p>
             <p className="text-base sm:text-lg text-gray-400 mt-6 max-w-xl leading-relaxed font-light">
               4th-year Computer Engineering student at Yildiz Technical University. As a scout and pilot, I am drawn to environments where discipline, situational awareness, and calm execution matter - the same mindset I bring to building reliable software.
@@ -103,7 +105,7 @@ export default function Home() {
 
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
-                href="/console#full-stack-engineering"
+                href="#engineering"
                 className="group inline-flex items-center gap-2 rounded-full px-6 py-3 border border-zinc-700 bg-zinc-900/80 text-white font-medium transition-all duration-300 hover:scale-[1.02] hover:border-emerald-500/50 hover:shadow-[0_0_20px_-6px_rgba(16,185,129,0.55)]"
               >
                 <span>View Engineering</span>
@@ -111,7 +113,7 @@ export default function Home() {
               </Link>
 
               <Link
-                href="#passions-section"
+                href="#passions"
                 className="inline-flex items-center gap-2 rounded-full px-6 py-3 border border-zinc-700 bg-zinc-900/60 text-gray-200 font-medium transition-all duration-300 hover:scale-[1.02] hover:border-sky-400/50 hover:text-white"
               >
                 Explore Passions
@@ -122,7 +124,7 @@ export default function Home() {
 
         {/* Step 2 & 3: Grid Layout for Narratives */}
         <motion.section 
-          id="passions-section"
+          id="passions"
           variants={containerVariants} 
           initial="hidden" 
           whileInView="visible"
@@ -150,8 +152,7 @@ export default function Home() {
                 alt="WAT Chipotle Team"
                 width={1600}
                 height={900}
-                quality={100}
-                unoptimized
+                quality={90}
                 className="w-full h-full object-cover rounded-xl"
               />
             </div>
@@ -171,8 +172,7 @@ export default function Home() {
                 alt="Piper Cherokee Aviation"
                 width={1600}
                 height={900}
-                quality={100}
-                unoptimized
+                quality={90}
                 className="w-full h-full object-cover rounded-xl"
               />
             </div>
@@ -184,6 +184,7 @@ export default function Home() {
 
         {/* Step 4: The Gateway (Call to Action) */}
         <motion.section
+          id="engineering"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"

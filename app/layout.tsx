@@ -16,7 +16,7 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL("https://fnizamioglu.com"),
   title: "FM | Portfolio",
-  description: "Full-Stack Engineer portfolio focused on robust software systems, product engineering, and low-level C/C++ problem solving.",
+  description: "The Personal Portfolio and Project Archive of Fikrat Mammadov.",
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
@@ -24,15 +24,15 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "FM | Portfolio",
-    description: "Full-Stack Engineer portfolio focused on robust software systems, product engineering, and low-level C/C++ problem solving.",
+    description: "The Personal Portfolio and Project Archive of Fikrat Mammadov.",
     url: "https://fnizamioglu.com",
     siteName: "FM | Portfolio",
     images: [
       {
-        url: "/og-image.jpeg", 
-        width: 1200,
-        height: 630,
-        alt: "Developer Console Portfolio",
+        url: "/headshot.jpeg",
+        width: 1024,
+        height: 1024,
+        alt: "Fikrat Mammadov Headshot",
       },
     ],
     locale: "en_US",

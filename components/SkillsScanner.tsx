@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useRef } from "react";
 import { motion, useInView, type Variants } from "framer-motion";
 import portfolioData from "@/constants/data.json";
 
@@ -14,14 +14,11 @@ interface SkillModule {
   label: string;
   category: string;
   skills: string[];
-  /** Tailwind color classes */
   color: {
-    bar: string;       // progress fill bg
-    barGlow: string;   // box-shadow glow around bar
-    text: string;      // header text
-    border: string;    // card border accent
-    badge: string;     // status badge
-    dot: string;       // status dot
+    text: string;
+    border: string;
+    badge: string;
+    dot: string;
   };
 }
 
@@ -34,8 +31,6 @@ const MODULES: SkillModule[] = [
     category: "WEB",
     skills: skills.web.map(clean),
     color: {
-      bar: "bg-blue-500",
-      barGlow: "0 0 12px rgba(59,130,246,0.5)",
       text: "text-blue-400",
       border: "border-blue-500/20",
       badge: "bg-blue-500/10 text-blue-400 border-blue-500/20",
@@ -48,8 +43,6 @@ const MODULES: SkillModule[] = [
     category: "SYSTEMS & SECURITY",
     skills: [...skills.databases_and_security.map(clean), ...skills.tools.map(clean)],
     color: {
-      bar: "bg-emerald-500",
-      barGlow: "0 0 12px rgba(16,185,129,0.5)",
       text: "text-emerald-400",
       border: "border-emerald-500/20",
       badge: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
@@ -62,8 +55,6 @@ const MODULES: SkillModule[] = [
     category: "LANGUAGES",
     skills: skills.languages.map(clean),
     color: {
-      bar: "bg-violet-500",
-      barGlow: "0 0 12px rgba(139,92,246,0.5)",
       text: "text-violet-400",
       border: "border-violet-500/20",
       badge: "bg-violet-500/10 text-violet-400 border-violet-500/20",
@@ -76,8 +67,6 @@ const MODULES: SkillModule[] = [
     category: "CONCEPTS",
     skills: skills.concepts.map(clean),
     color: {
-      bar: "bg-amber-500",
-      barGlow: "0 0 12px rgba(245,158,11,0.5)",
       text: "text-amber-400",
       border: "border-amber-500/20",
       badge: "bg-amber-500/10 text-amber-400 border-amber-500/20",
@@ -105,107 +94,14 @@ const cardVariants: Variants = {
   },
 };
 
-const rowVariants: Variants = {
-  hidden: { opacity: 0, x: -16 },
+const chipVariants: Variants = {
+  hidden: { opacity: 0, y: 6 },
   visible: {
     opacity: 1,
-    x: 0,
-    transition: { duration: 0.4, ease: "easeOut" },
+    y: 0,
+    transition: { duration: 0.25, ease: "easeOut" },
   },
 };
-
-// ── Skill Row Sub-Component ─────────────────────────────────────────────
-interface SkillRowProps {
-  name: string;
-  index: number;
-  color: SkillModule["color"];
-}
-
-function SkillRow({ name, index, color }: SkillRowProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-40px" });
-  const [hovered, setHovered] = useState(false);
-
-  // Deterministic "proficiency" width between 72% and 98%
-  const seed = name.split("").reduce((a, c) => a + c.charCodeAt(0), 0);
-  const width = 72 + (seed % 27);
-
-  return (
-    <motion.div
-      ref={ref}
-      variants={rowVariants}
-      className="group relative flex items-center gap-3 py-2.5 px-3 rounded-md transition-colors duration-300 hover:bg-white/[0.03] cursor-default"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
-      {/* Index label */}
-      <span className="text-[10px] font-mono text-white/20 w-5 shrink-0 tabular-nums select-none">
-        {String(index + 1).padStart(2, "0")}
-      </span>
-
-      {/* Skill name with glitch effect on hover */}
-      <span
-        className={`text-xs sm:text-sm font-mono text-gray-300 w-28 sm:w-36 shrink-0 truncate transition-all duration-200 ${
-          hovered ? "skills-glitch" : ""
-        }`}
-        data-text={name}
-      >
-        {name}
-      </span>
-
-      {/* Loading bar track */}
-      <div className="flex-1 h-[6px] rounded-full bg-white/[0.04] overflow-hidden relative">
-        <motion.div
-          className={`h-full rounded-full ${color.bar}`}
-          initial={{ width: 0 }}
-          animate={isInView ? { width: `${width}%` } : { width: 0 }}
-          transition={{ duration: 1.2, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
-          style={{ boxShadow: isInView ? color.barGlow : "none" }}
-        />
-        {/* Scanline shimmer on bar */}
-        {isInView && (
-          <motion.div
-            className="absolute inset-0 rounded-full"
-            style={{
-              background:
-                "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.15) 50%, transparent 100%)",
-            }}
-            initial={{ x: "-100%" }}
-            animate={{ x: "200%" }}
-            transition={{ duration: 1.8, delay: index * 0.08 + 0.6, ease: "easeInOut" }}
-          />
-        )}
-      </div>
-
-      {/* Percentage */}
-      <motion.span
-        className="text-[10px] font-mono text-white/30 w-9 text-right shrink-0 tabular-nums"
-        initial={{ opacity: 0 }}
-        animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 0.4, delay: index * 0.08 + 0.8 }}
-      >
-        {width}%
-      </motion.span>
-
-      {/* Tooltip: Status Operational */}
-      {hovered && (
-        <motion.div
-          initial={{ opacity: 0, y: 6, scale: 0.95 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          exit={{ opacity: 0, y: 6, scale: 0.95 }}
-          transition={{ duration: 0.15 }}
-          className={`absolute -top-9 left-1/2 -translate-x-1/2 z-50 px-3 py-1.5 rounded-md border text-[10px] font-mono tracking-wide whitespace-nowrap backdrop-blur-md bg-black/80 ${color.border}`}
-        >
-          <span className={`inline-block w-1.5 h-1.5 rounded-full ${color.dot} mr-1.5 animate-pulse`} />
-          <span className="text-gray-300">Status:</span>{" "}
-          <span className={color.text}>Operational</span>
-          {/* Tooltip arrow */}
-          <div className="absolute left-1/2 -translate-x-1/2 -bottom-1 w-2 h-2 rotate-45 border-r border-b bg-black/80 border-white/10" />
-        </motion.div>
-      )}
-    </motion.div>
-  );
-}
 
 // ── Module Card Sub-Component ───────────────────────────────────────────
 interface ModuleCardProps {
@@ -259,15 +155,21 @@ function ModuleCard({ mod, index }: ModuleCardProps) {
         </span>
       </div>
 
-      {/* Skill Rows */}
+      {/* Toolbox Chips */}
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
-        className="space-y-0.5"
+        className="flex flex-wrap gap-2"
       >
-        {mod.skills.map((skill, i) => (
-          <SkillRow key={skill} name={skill} index={i} color={mod.color} />
+        {mod.skills.map((skill) => (
+          <motion.span
+            key={skill}
+            variants={chipVariants}
+            className="px-3 py-1.5 rounded-md border border-white/10 bg-white/[0.03] text-xs sm:text-[13px] font-mono tracking-wide text-gray-300 transition-colors duration-200 hover:text-white hover:border-white/25"
+          >
+            {skill}
+          </motion.span>
         ))}
       </motion.div>
     </motion.div>
@@ -317,7 +219,7 @@ export default function SkillsScanner(): JSX.Element {
           Technical Arsenal
         </h2>
         <p className="mt-2 text-sm sm:text-base text-gray-500 font-mono max-w-xl">
-          Runtime diagnostics of active skill modules and proficiency levels.
+          Runtime inventory of technologies used across product, systems, and low-level engineering work.
         </p>
       </motion.div>
 

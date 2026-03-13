@@ -14,28 +14,28 @@ const PROJECTS: ProjectCard[] = [
     id: "saas-gym-platform",
     title: "SaaS Gym Platform",
     summary:
-      "A full-stack platform built for modern gym operations, combining robust backend data flows with a polished product experience.",
+      "Built a multi-tenant platform for gym operations with secure data boundaries and production-focused workflows.",
     stack: ["Next.js", "React", "Supabase"],
   },
   {
     id: "ms-paint-clone",
     title: "MS Paint Clone",
     summary:
-      "A desktop drawing application recreation focused on rendering controls, brush behavior, and smooth UI interactions.",
+      "Developed a desktop drawing application focused on event-driven rendering behavior and maintainable UI controls.",
     stack: ["C#"],
   },
   {
     id: "airport-traffic-management",
     title: "Airport Traffic Management Algorithm",
     summary:
-      "A low-level systems programming project in C for modeling and optimizing runway and traffic coordination logic.",
+      "Implemented a low-level C project for runway coordination modeling with memory-conscious data handling.",
     stack: ["C"],
   },
   {
     id: "numerical-methods-calculator",
     title: "Numerical Methods Calculator",
     summary:
-      "An algorithm-first calculator in C implementing core numerical methods with a strong focus on precision and performance.",
+      "Implemented core numerical-analysis methods in C with deterministic output and performance-oriented structure.",
     stack: ["C"],
   },
 ];
@@ -99,16 +99,20 @@ export default function FullStackEngineering(): JSX.Element {
               variants={cardVariants}
               className="group chromatic-border rounded-2xl border border-zinc-800 bg-zinc-900/50 p-6 sm:p-7 transition-transform duration-300 hover:scale-[1.02] hover:bg-zinc-900/80 hover:border-zinc-700"
             >
-              <div>
+              <div className="min-h-[170px]">
                 <h3 className="text-lg sm:text-xl font-semibold text-white tracking-tight">
                   {project.title}
                 </h3>
-                <p className="mt-3 text-sm sm:text-base text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
+                <p className="mt-4 text-base sm:text-[1.02rem] text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
                   {project.summary}
                 </p>
               </div>
 
-              <div className="mt-5 flex flex-wrap gap-2">
+              <div className="mt-7 pt-4 border-t border-white/10">
+                <p className="text-[10px] sm:text-xs font-mono tracking-[0.2em] uppercase text-gray-500 mb-3">
+                  {`// tools utilized`}
+                </p>
+                <div className="flex flex-wrap gap-2">
                 {project.stack.map((tech) => (
                   <span
                     key={`${project.id}-${tech}`}
@@ -117,6 +121,7 @@ export default function FullStackEngineering(): JSX.Element {
                     {tech}
                   </span>
                 ))}
+                </div>
               </div>
             </motion.article>
           ))}

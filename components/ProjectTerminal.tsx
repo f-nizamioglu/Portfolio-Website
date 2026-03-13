@@ -2,7 +2,16 @@
 
 import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 import portfolioData from "@/constants/data.json";
+
+type ProjectRecord = {
+  id: string;
+  title: string;
+  description: string;
+  tech?: string[];
+  techStack?: string[];
+};
 
 type TerminalHistoryItem = {
   type: "input" | "output" | "error";
@@ -10,6 +19,7 @@ type TerminalHistoryItem = {
 };
 
 export default function ProjectTerminal(): JSX.Element | null {
+  const router = useRouter();
   const [isSequenceComplete, setIsSequenceComplete] = useState(false);
   const [history, setHistory] = useState<TerminalHistoryItem[]>([]);
   const [inputVal, setInputVal] = useState("");
@@ -17,12 +27,31 @@ export default function ProjectTerminal(): JSX.Element | null {
   const [historyIndex, setHistoryIndex] = useState(-1);
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const terminalContainerRef = useRef<HTMLDivElement>(null);
+  const projects = portfolioData.projects as ProjectRecord[];
 
   useEffect(() => {
     if (history.length > 1 && bottomRef.current) {
       bottomRef.current.scrollIntoView({ behavior: "smooth", block: "nearest" });
     }
   }, [history]);
+
+  useEffect(() => {
+    const container = terminalContainerRef.current;
+    if (!container) return;
+
+    const focusInput = () => {
+      if (isSequenceComplete) {
+        inputRef.current?.focus();
+      }
+    };
+
+    container.addEventListener("click", focusInput);
+
+    return () => {
+      container.removeEventListener("click", focusInput);
+    };
+  }, [isSequenceComplete]);
 
   const handleAnimationComplete = () => {
     setIsSequenceComplete(true);
@@ -32,12 +61,6 @@ export default function ProjectTerminal(): JSX.Element | null {
         content: <span className="text-blue-400 font-bold">[SYSTEM] <span className="text-gray-300 font-normal">Interactive shell active. Type &apos;help&apos; to view available commands.</span></span>
       }
     ]);
-  };
-
-  const handleTerminalClick = () => {
-    if (isSequenceComplete) {
-      inputRef.current?.focus();
-    }
   };
 
   const executeCommand = (rawCommand: string) => {
@@ -57,15 +80,14 @@ export default function ProjectTerminal(): JSX.Element | null {
 
       if (base === "projects") {
         if (flag === "--list") {
-          const listContent = portfolioData.projects.map((p) => (
+          const listContent = projects.map((p) => (
             <div key={p.id} className="text-gray-400 font-mono">
               <span className="text-emerald-400">[ID]</span> {p.id} <span className="text-white/20">|</span> <span className="text-emerald-400">[TITLE]</span> {p.title.replace(/\[cite:\s*\d+\]/g, "").trim()}
             </div>
           ));
           setHistory((prev) => [...prev, { type: "output", content: <div className="flex flex-col gap-1">{listContent}</div> }]);
         } else if (flag === "--view" && arg) {
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          const project: any = portfolioData.projects.find((p) => p.id === arg);
+          const project = projects.find((p) => p.id === arg);
           if (project) {
             let outputContent;
             if (project.id === "oop-paint-clone") {
@@ -109,6 +131,7 @@ export default function ProjectTerminal(): JSX.Element | null {
             <div className="flex gap-4"><span className="text-emerald-400 min-w-[200px]">projects --view &lt;id&gt;</span><span>: View architectural details of a specific project.</span></div>
             <div className="flex gap-4"><span className="text-emerald-400 min-w-[200px]">neofetch</span><span>: View personal system stats.</span></div>
             <div className="flex gap-4"><span className="text-emerald-400 min-w-[200px]">clear</span><span>: Clear the terminal output.</span></div>
+            <div className="flex gap-4"><span className="text-emerald-400 min-w-[200px]">exit</span><span>: Return to landing page.</span></div>
           </div>
         );
         setHistory((prev) => [...prev, { type: "output", content: helpContent }]);
@@ -141,6 +164,12 @@ export default function ProjectTerminal(): JSX.Element | null {
         setHistory((prev) => [...prev, { type: "output", content: neofetchContent }]);
       } else if (base === "clear") {
         setHistory([]);
+      } else if (base === "exit") {
+        setHistory((prev) => [
+          ...prev,
+          { type: "output", content: <span className="text-gray-400">[SYSTEM] Closing session...</span> }
+        ]);
+        router.push("/");
       } else {
         setHistory((prev) => [
           ...prev,
@@ -181,7 +210,7 @@ export default function ProjectTerminal(): JSX.Element | null {
     }
   };
 
-  const project = portfolioData.projects.find((p) => p.id === "airport-traffic");
+  const project = projects.find((p) => p.id === "airport-traffic");
 
   if (!project) return null;
 
@@ -253,7 +282,7 @@ export default function ProjectTerminal(): JSX.Element | null {
             <div className="w-12" /> {/* Spacer for centering */}
           </div>
 
-          <div className="p-6 md:p-8 flex flex-col gap-8 bg-[#0a0a0a] cursor-text" onClick={handleTerminalClick}>
+          <div ref={terminalContainerRef} className="p-6 md:p-8 flex flex-col gap-8 bg-[#0a0a0a] cursor-text">
             
             {/* 1. Animated Build Logs */}
             <div className="flex flex-col gap-3">
