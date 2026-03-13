@@ -1,14 +1,25 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 
 export default function NavBar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 backdrop-blur-md bg-[#050505]/60 border-b border-white/5">
-      <div className="flex items-center gap-3 text-white font-mono font-bold tracking-widest text-sm sm:text-base">
-        <span className="text-emerald-500">./</span>
-        <span className="text-white/10 hidden sm:inline">|</span>
-        <span className="hidden sm:inline text-gray-400 font-light text-xs">PORTFOLIO.CONSOLE</span>
+      <div className="flex items-center gap-4">
+        <Link
+          href="/"
+          className="group flex items-center gap-1.5 border border-white/10 bg-white/5 hover:bg-emerald-500/10 hover:border-emerald-500/40 text-gray-400 hover:text-emerald-400 px-3 py-1.5 rounded-full font-mono text-[11px] sm:text-xs tracking-wider uppercase transition-all duration-300"
+        >
+          <ArrowLeft className="w-3 h-3 group-hover:-translate-x-0.5 transition-transform duration-300" />
+          <span>Home</span>
+        </Link>
+        <div className="flex items-center gap-3 text-white font-mono font-bold tracking-widest text-sm sm:text-base">
+          <span className="text-emerald-500">./</span>
+          <span className="text-white/10 hidden sm:inline">|</span>
+          <span className="hidden sm:inline text-gray-400 font-light text-xs">PORTFOLIO.CONSOLE</span>
+        </div>
       </div>
 
       <div className="flex items-center gap-2.5 border border-white/10 bg-white/5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full backdrop-blur-md">
